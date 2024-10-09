@@ -6,7 +6,7 @@ ALIASES_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/aliases
 SYNTAX_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/themes/syntax-highlighting.zsh"
 ZSHENV_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/.zshenv"
 
-mkdir -p "$HOME/.config/zsh/plugins" "$HOME/.zsh"
+mkdir -p "$HOME/.config/zsh/plugins" "$HOME/.config/zsh/plugins/themes" "$HOME/.zsh"
 
 download_file() {
     local url="$1"
