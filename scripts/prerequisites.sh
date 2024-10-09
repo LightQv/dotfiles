@@ -66,16 +66,14 @@ install_docker() {
     fi
 }
 
-if ! command -v brew &> /dev/null; then
-    echo -n "Install Homebrew? [y/n] "
-    read query_homebrew
-    if [[ "$query_homebrew" == "y" || "$query_homebrew" == "Y" ]]; then
-        install_homebrew
-        . "$HOME/.bash_profile"
-    else
-        error "Please install Homebrew manually."
-        exit 1
-    fi
+echo -n "Install Homebrew? [y/n] "
+read query_homebrew
+if [[ "$query_homebrew" == "y" || "$query_homebrew" == "Y" ]]; then
+    install_homebrew
+    . "$HOME/.bash_profile"
+else
+    error "Please install Homebrew manually."
+    exit 1
 fi
 
 if ! command -v git &> /dev/null; then
@@ -89,13 +87,11 @@ if ! command -v git &> /dev/null; then
 	fi
 fi
 
-if ! command -v docker &> /dev/null; then
-	echo -n "Install Docker ? [y/n] "
-    read query_docker
-	if [[ "$query_docker" == "y" || "$query_docker" == "Y" ]]; then
-		install_docker
-	else
-		error "Please install docker manually."
-        exit 1
-	fi
+echo -n "Install Docker ? [y/n] "
+read query_docker
+if [[ "$query_docker" == "y" || "$query_docker" == "Y" ]]; then
+	install_docker
+else
+	error "Please install docker manually."
+    exit 1
 fi
