@@ -11,8 +11,6 @@ install_lazydocker() {
     fi
 }
 
-## TODO Installer Docker avant
-
 if ! command -v lazydocker &> /dev/null; then
     echo -n "Install Lazydocker? [y/n] "
     read query_lazydocker
@@ -21,11 +19,11 @@ if ! command -v lazydocker &> /dev/null; then
     fi
 fi
 
-LAZYDOCKER_URL = $HOME/Library/Application\ Support/lazydocker/
-
 LAZYDOCKER_CONF_URL="https://raw.githubusercontent.com/lightqv/dotfiles/lazydocker/config.yml"
+LAZYDOCKER_URL="$HOME/Library/Application Support/lazydocker/"
+
 info "Downloading Lazydocker's config.yml..." 
-curl -# -o "$LAZYDOCKER_URL" "$LAZYDOCKER_CONF_URL"
+curl -# -o "$LAZYDOCKER_URL/config.yml" "$LAZYDOCKER_CONF_URL" 
 if [[ $? -eq 0 ]]; then
     success "Lazydocker's config.yml has been successfully downloaded."
 else
