@@ -28,6 +28,44 @@ install_git() {
 	fi 
 }
 
+install_docker() {
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+		# Debian/Ubuntu 
+        info "Installing Docker for Linux..."
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+        sudo systemctl start docker
+        sudo systemctl enable docker
+        sudo usermod -aG docker $USER
+        success "Docker has been installed successfully."
+        
+        info "Verifying Docker installation..."
+        if sudo docker run hello-world; then
+            success "Docker is working correctly."
+        else
+            error "Docker installation seems to have issues."
+        fi
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        info "Installing Docker (via Colima) for macOS..."
+        brew install docker
+        brew install colima
+        success "Docker and Colima have been installed successfully."
+        
+        info "Starting Colima to verify installation..."
+        colima start
+        if docker run hello-world; then
+            success "Docker is working correctly."
+        else
+            error "Docker installation seems to have issues."
+        fi
+        info "Stopping Colima..."
+        colima stop
+    else
+        error "Unsupported OS. Please install Docker manually."
+        return 1
+    fi
+}
+
 if ! command -v brew &> /dev/null; then
     echo -n "Install Homebrew? [y/n] "
     read query_homebrew
@@ -47,6 +85,17 @@ if ! command -v git &> /dev/null; then
 		install_git
 	else
 		error "Please install git manually."
+        exit 1
+	fi
+fi
+
+if ! command -v docker &> /dev/null; then
+	echo -n "Install Docker ? [y/n] "
+    read query_docker
+	if [[ "$query_docker" == "y" || "$query_docker" == "Y" ]]; then
+		install_docker
+	else
+		error "Please install docker manually."
         exit 1
 	fi
 fi

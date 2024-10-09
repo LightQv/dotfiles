@@ -21,6 +21,7 @@ palette = "catppuccin_mocha"
 format = ' [$path]($style)[$read_only]($read_only_style) '
 style = 'bold mauve'
 read_only_style = 'bold pink'
+truncation_symbol = '…/'
 
 [fill]
 symbol = '─'

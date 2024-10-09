@@ -17,3 +17,8 @@ alias gcm='git commit -m'            # Git commit with message
 # ZSH
 alias zrc='vim "$HOME/.config/zsh/.zshrc"' # Open .zshrc with Vim
 alias szrc='. "$HOME/.config/zsh/.zshrc"'  # Source .zshrc
+
+# Lazydocker
+alias lazydocker='colima start && lazydocker'   # Run colima then lazydocker
+alias lzd='lazydocker'                          # Lazydocker alias
+alias lzend='colima stop'                       # Stop colima 

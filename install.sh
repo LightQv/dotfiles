@@ -6,6 +6,7 @@ SCRIPT_DIR="$PWD"
 . "$SCRIPT_DIR/scripts/vim.sh"
 . "$SCRIPT_DIR/scripts/zsh.sh"
 . "$SCRIPT_DIR/scripts/terminal.sh"
+. "$SCRIPT_DIR/scripts/lazydocker.sh"
 
 . "$HOME/.config/zsh/.zshrc"
 
