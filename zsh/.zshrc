@@ -5,4 +5,5 @@
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
 # Themes
-[ -f "$HOME/.config/zsh/themes/syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/syntax-highlighting.zsh"
+[ -f "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh"
+#[ -f "$HOME/.config/zsh/themes/cyberpunk-syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/cyberpunk-syntax-highlighting.zsh"
