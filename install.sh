@@ -8,19 +8,19 @@ SCRIPT_DIR="$PWD"
 . "$SCRIPT_DIR/scripts/lazydocker.sh"
 . "$SCRIPT_DIR/scripts/terminal.sh"
 
-ZSHRC="$HOME/.config/zsh/.zshenv"
+ZSHENV="$HOME/.zshenv"
 
-add_to_zshrc() {
-    if ! grep -q "$1" "$ZSHRC"; then
-        echo "$1" >> "$ZSHRC"
+add_to_zshenv() {
+    if ! grep -q "$1" "$ZSHENV"; then
+        echo "$1" >> "$ZSHENV"
     fi
 }
 
-add_to_zshrc 'eval "$(/opt/homebrew/bin/brew shellenv)"'
-add_to_zshrc 'export PATH="/opt/homebrew/bin:$PATH"'
-add_to_zshrc 'export PATH="/usr/local/bin:$PATH"'
+add_to_zshenv 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+add_to_zshenv 'export PATH="/opt/homebrew/bin:$PATH"'
+add_to_zshenv 'export PATH="/usr/local/bin:$PATH"'
 
-. "$ZSHRC"
+. "$HOME/.config/zsh/.zshrc"
 
 cat << STONK
 ⠀⠀⠀⠀⠀⢀⠤⠐⠒⠀⠀⠀⠒⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
