@@ -8,7 +8,7 @@ SCRIPT_DIR="$PWD"
 . "$SCRIPT_DIR/scripts/lazydocker.sh"
 . "$SCRIPT_DIR/scripts/terminal.sh"
 
-ZSHRC="$HOME/.config/zsh/.zshrc"
+ZSHRC="$HOME/.config/zsh/.zshenv"
 
 add_to_zshrc() {
     if ! grep -q "$1" "$ZSHRC"; then
