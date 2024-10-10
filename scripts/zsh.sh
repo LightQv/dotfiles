@@ -3,7 +3,8 @@
 ZSHRC_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/.zshrc"
 CUSTOM_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/custom.zsh"
 ALIASES_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/aliases.zsh"
-SYNTAX_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/themes/syntax-highlighting.zsh"
+MOCHA_SYNTAX_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/themes/mocha-syntax-highlighting.zsh"
+CYBERPUNK_SYNTAX_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/themes/cyberpunk-syntax-highlighting.zsh"
 ZSHENV_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/zsh/.zshenv"
 
 mkdir -p "$HOME/.config/zsh/plugins" "$HOME/.config/zsh/themes" "$HOME/.zsh"
@@ -23,7 +24,8 @@ download_file() {
 download_file "$ZSHRC_URL" "$HOME/.config/zsh/.zshrc"
 download_file "$CUSTOM_URL" "$HOME/.config/zsh/custom.zsh"
 download_file "$ALIASES_URL" "$HOME/.config/zsh/aliases.zsh"
-download_file "$SYNTAX_THEME_URL" "$HOME/.config/zsh/themes/syntax-highlighting.zsh"
+download_file "$MOCHA_SYNTAX_THEME_URL" "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh"
+download_file "$CYBERPUNK_SYNTAX_THEME_URL" "$HOME/.config/zsh/themes/cyberpunk-syntax-highlighting.zsh"
 download_file "$ZSHENV_URL" "$HOME/.zshenv"
 
 clone_repo() {
