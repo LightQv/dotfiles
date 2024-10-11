@@ -20,7 +20,7 @@ if ! command -v lazydocker &> /dev/null; then
 fi
 
 LAZYDOCKER_CONF_URL="https://raw.githubusercontent.com/lightqv/dotfiles/lazydocker/config.yml"
-LAZYDOCKER_URL="$HOME/Library/Application Support/lazydocker/"
+LAZYDOCKER_URL="$HOME/Library/Application Support/lazydocker"
 
 info "Downloading Lazydocker's config.yml..." 
 curl -# -o "$LAZYDOCKER_URL/config.yml" "$LAZYDOCKER_CONF_URL" 

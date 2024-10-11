@@ -29,43 +29,72 @@ install_git() {
 	fi 
 }
 
-install_docker() {
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-		# Debian/Ubuntu 
-        info "Installing Docker for Linux..."
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-        sudo systemctl start docker
-        sudo systemctl enable docker
-        sudo usermod -aG docker $USER
-        success "Docker has been installed successfully."
+# install_docker() {
+#     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+# 		# Debian/Ubuntu 
+#         info "Installing Docker for Linux..."
+#         sudo apt-get update
+#         sudo apt-get install -y docker.io
+#         sudo systemctl start docker
+#         sudo systemctl enable docker
+#         sudo usermod -aG docker $USER
+#         success "Docker has been installed successfully."
         
-        info "Verifying Docker installation..."
-        if sudo docker run hello-world; then
-            success "Docker is working correctly."
-        else
-            error "Docker installation seems to have issues."
-        fi
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        info "Installing Docker (via Colima) for macOS..."
-        brew install docker
-        brew install colima
-        success "Docker and Colima have been installed successfully."
+#         info "Verifying Docker installation..."
+#         if sudo docker run hello-world; then
+#             success "Docker is working correctly."
+#         else
+#             error "Docker installation seems to have issues."
+#         fi
+#     elif [[ "$OSTYPE" == "darwin"* ]]; then
+#         info "Installing Docker (via Colima) for macOS..."
+#         brew install docker
+#         brew install colima
+#         success "Docker and Colima have been installed successfully."
         
-        info "Starting Colima to verify installation..."
-        colima start
-        if docker run hello-world; then
-            success "Docker is working correctly."
-        else
-            error "Docker installation seems to have issues."
-        fi
-        info "Stopping Colima..."
-        colima stop
-    else
-        error "Unsupported OS. Please install Docker manually."
-        return 1
-    fi
-}
+#         info "Starting Colima to verify installation..."
+#         colima start
+#         if docker run hello-world; then
+#             success "Docker is working correctly."
+#         else
+#             error "Docker installation seems to have issues."
+#         fi
+#         info "Stopping Colima..."
+#         colima stop
+#     else
+#         error "Unsupported OS. Please install Docker manually."
+#         return 1
+#     fi
+# }
+
+# install_docker_compose() {
+#     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+#         info "Installing Docker Compose for Linux..."
+#         sudo apt-get install -y docker-compose-plugin
+#         success "Docker Compose plugin has been installed successfully."
+        
+#         info "Verifying Docker Compose installation..."
+#         if docker compose version; then
+#             success "Docker Compose is working correctly."
+#         else
+#             error "Docker Compose installation seems to have issues."
+#         fi
+#     elif [[ "$OSTYPE" == "darwin"* ]]; then
+#         info "Installing Docker Compose via Homebrew for macOS..."
+#         brew install docker-compose
+#         success "Docker Compose has been installed successfully."
+        
+#         info "Verifying Docker Compose installation..."
+#         if docker-compose --version; then
+#             success "Docker Compose is working correctly."
+#         else
+#             error "Docker Compose installation seems to have issues."
+#         fi
+#     else
+#         error "Unsupported OS. Please install Docker Compose manually."
+#         return 1
+#     fi
+# }
 
 if ! command -v brew &> /dev/null; then
     echo -n "Install Homebrew? [y/n] "
@@ -90,13 +119,24 @@ if ! command -v git &> /dev/null; then
 	fi
 fi
 
-if ! command -v docker &> /dev/null; then
-	echo -n "Install Docker ? [y/n] "
-    read query_docker
-	if [[ "$query_docker" == "y" || "$query_docker" == "Y" ]]; then
-		install_docker
-	else
-		error "Please install docker manually."
-        exit 1
-	fi
-fi
+# if ! command -v docker &> /dev/null; then
+# 	echo -n "Install Docker ? [y/n] "
+#     read query_docker
+# 	if [[ "$query_docker" == "y" || "$query_docker" == "Y" ]]; then
+# 		install_docker
+# 	else
+# 		error "Please install docker manually."
+#         exit 1
+# 	fi
+# fi
+
+# if ! command -v docker compose &> /dev/null; then
+#     echo -n "Install Docker Compose plugin? [y/n] "
+#     read query_docker_compose
+#     if [[ "$query_docker_compose" == "y" || "$query_docker_compose" == "Y" ]]; then
+#         install_docker_compose
+#     else
+#         error "Please install Docker Compose manually."
+#         exit 1
+#     fi
+# fi

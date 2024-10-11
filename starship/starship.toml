@@ -19,93 +19,49 @@ palette = "catppuccin_mocha"
 # Format Customization
 [directory]
 format = ' [$path]($style)[$read_only]($read_only_style) '
-style = 'bold mauve'
-read_only_style = 'bold pink'
+style = 'bold directory'
+read_only_style = 'bold info'
 truncation_symbol = '…/'
 
 [fill]
 symbol = '─'
-style = 'surface0'
+style = 'accent'
 
 [git_branch]
-style = 'bold sky'
+style = 'bold primary'
 
 [git_status]
-style = 'bold purple'
+style = 'bold info'
 
 [nodejs]
 format = '[$symbol($version )]($style)'
 version_format = '${raw}'
 symbol = 'Node '
-style = 'italic purple'
+style = 'italic info'
 
 [python]
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 version_format = '${raw}'
 symbol = 'Python '
-style = 'italic purple'
+style = 'italic info'
 
 [cmd_duration]
-style = 'italic purple'
+style = 'italic info'
 
 [character]
 format = ' $symbol '
-success_symbol = '[❯](bold sky)'
-error_symbol = '[✖](bold pink)'
+success_symbol = '[❯](bold primary)'
+error_symbol = '[✖](bold info)'
 
 # Palettes
 [palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+directory = "#cba6f7" # Catppuccin Mocha mauve
+primary = "#89dceb" # Catppuccin Mocha sky
+info = "#f5c2e7" # Catppuccin Mocha pink
+accent = "#313244" # Catppuccin Mocha surface0
 
 [palettes.cyberpunk]
-rosewater = "#FFD700"  # Bright yellow for text
-flamingo = "#FF4500"   # Red-orange
-pink = "#FF00FF"       # Neon magenta
-mauve = "#FF00FF"      # Same as pink
-red = "#FF0000"        # Neon red
-maroon = "#8B0000"     # Dark red
-peach = "#FFD700"      # Yellow for key highlights
-yellow = "#FFD700"     # Bright yellow for directory
-green = "#00FF00"      # Neon green
-teal = "#00CED1"       # Neon turquoise (cyan)
-sky = "#00FFFF"        # Cyan blue
-sapphire = "#00FFFF"   # Same as sky
-blue = "#00FFFF"       # Same cyan blue
-lavender = "#FFD700"   # Yellow (repurposed for consistent theme)
-text = "#FFD700"       # Text in bright yellow
-subtext1 = "#E0E0E0"   # Softer white
-subtext0 = "#B0B0B0"   # Even softer white
-overlay2 = "#A0A0A0"   # Soft gray
-overlay1 = "#808080"   # Darker gray
-overlay0 = "#606060"   # Even darker gray
-surface2 = "#3C0F0F"   # Dark red for surface
-surface1 = "#2E0C0C"   # Slightly lighter dark red
-surface0 = "#1C0A0A"   # Main dark red background
-base = "#1C0A0A"       # Dark red base
-mantle = "#240B0B"     # Slightly lighter than base
-crust = "#2F0C0C"      # The lightest dark red
+directory = "#00FFFF"  # Neon cyan for directory
+primary = "#FFD700"  # Bright yellow for primary elements
+info = "#FF4500"  # Red-orange for info or warnings
+accent = "#404040"  # Dark gray for accent elements
