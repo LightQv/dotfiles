@@ -73,10 +73,19 @@ fi
 mkdir -p "$HOME/.config/kitty/themes"
 
 MOCHA_KITTY_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/kitty/themes/mocha.conf"
-info "Downloading kitty.conf..." 
+info "Downloading mocha.conf..." 
 curl -# -o "$HOME/.config/kitty/themes/mocha.conf" "$MOCHA_KITTY_THEME_URL"
 if [[ $? -eq 0 ]]; then
-    success "kitty.conf has been successfully downloaded."
+    success "mocha.conf has been successfully downloaded."
 else
-    error "Error while downloading kitty.conf file."
+    error "Error while downloading mocha.conf file."
+fi
+
+CYBERPUNK_KITTY_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/kitty/themes/cyberpunk.conf"
+info "Downloading cyberpunk.conf..." 
+curl -# -o "$HOME/.config/kitty/themes/mocha.conf" "$CYBERPUNK_KITTY_THEME_URL"
+if [[ $? -eq 0 ]]; then
+    success "cyberpunk.conf has been successfully downloaded."
+else
+    error "Error while downloading cyberpunk.conf file."
 fi
