@@ -83,7 +83,7 @@ fi
 
 CYBERPUNK_KITTY_THEME_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/kitty/themes/cyberpunk.conf"
 info "Downloading cyberpunk.conf..." 
-curl -# -o "$HOME/.config/kitty/themes/mocha.conf" "$CYBERPUNK_KITTY_THEME_URL"
+curl -# -o "$HOME/.config/kitty/themes/cyberpunk.conf" "$CYBERPUNK_KITTY_THEME_URL"
 if [[ $? -eq 0 ]]; then
     success "cyberpunk.conf has been successfully downloaded."
 else
