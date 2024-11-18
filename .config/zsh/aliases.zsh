@@ -48,10 +48,6 @@ alias kitty_cyberpunk='
     kitty @ load-config
 '
 
-# Lazydocker
-#alias lazydocker='colima start && lazydocker'   # Run colima then lazydocker
-#alias lzd='lazydocker'                          # Lazydocker alias
-#alias lzend='colima stop'                       # Stop colima 
-
 # Docker
-#alias docker\ compose='docker-compose'          # Docker compose
+alias dc='docker-compose'          # Docker-compose
+alias dc='docker compose'          # Docker compose
