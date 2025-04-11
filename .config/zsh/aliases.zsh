@@ -12,7 +12,9 @@ alias ls='ls --color=auto'           # Colorized ls (if supported)
 
 # Git
 alias gs='git status'                # Git status shortcut 
-alias gcm='git commit -m'            # Git commit with message
+alias gcommit='git commit -m'            # Git commit with message
+alias gpush='git push origin $(git branch --show-current)' # Git push origin current branch
+alias gpod='git pull origin develop' # Git pull origin develop
 
 # ZSH
 alias vzrc='vim "$HOME/.config/zsh/.zshrc"' # Open .zshrc with Vim
