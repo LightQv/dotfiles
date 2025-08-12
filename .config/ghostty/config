@@ -15,18 +15,17 @@ keybind = ctrl+a>c=copy_to_clipboard
 keybind = ctrl+a>v=paste_from_clipboard
 
 keybind = ctrl+a>cmd+t=new_tab
-# keybind = ctrl+a>cmd+shift+left=previous_tab
-# keybind = ctrl+a>cmd+shift+right=next_tab
+keybind = ctrl+a>cmd+shift+t=close_tab
 
+keybind = ctrl+a>cmd+shift+h=new_split:left
+keybind = ctrl+a>cmd+shift+j=new_split:down
 keybind = ctrl+a>cmd+shift+k=new_split:up
-keybind = ctrl+a>cmd+shift+l=new_split:down
-keybind = ctrl+a>cmd+shift+j=new_split:left
-keybind = ctrl+a>cmd+shift+m=new_split:right
+keybind = ctrl+a>cmd+shift+l=new_split:right
 
+keybind = ctrl+a>cmd+h=goto_split:left
+keybind = ctrl+a>cmd+j=goto_split:down
 keybind = ctrl+a>cmd+k=goto_split:up
-keybind = ctrl+a>cmd+l=goto_split:down
-keybind = ctrl+a>cmd+j=goto_split:left
-keybind = ctrl+a>cmd++m=goto_split:right
+keybind = ctrl+a>cmd+l=goto_split:right
 
 keybind = ctrl+a>cmd+p=goto_split:previous
 keybind = ctrl+a>cmd+n=goto_split:next
