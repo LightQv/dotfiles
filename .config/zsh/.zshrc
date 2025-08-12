@@ -6,4 +6,3 @@
 
 # Themes
 [ -f "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh"
-#[ -f "$HOME/.config/zsh/themes/cyberpunk-syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/cyberpunk-syntax-highlighting.zsh"

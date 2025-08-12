@@ -19,3 +19,6 @@ export FZF_DEFAULT_OPTS=" \
 
 ## autojump
 [[ -s "$(brew --prefix autojump)/etc/profile.d/autojump.sh" ]] && source "$(brew --prefix autojump)/etc/profile.d/autojump.sh"
+
+## force brew python use
+export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"

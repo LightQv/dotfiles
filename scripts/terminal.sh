@@ -25,31 +25,28 @@ else
 fi
 
 # -- Starship --
-starship --version
-if [[ $? -eq 0 ]]; then
-    rm -f "$HOME/.config/starship.toml"
-    brew reinstall starship
-fi
-
-info "Installing Starship..."
-brew install starship
-if [[ $? -eq 0 ]]; then
-	success "Starship has been installed successfully!"
+if command -v starship &> /dev/null; then
+	success "Starship is already installed!"
 else
-	error "Starship installation failed."
+  info "Installing Starship..."
+  brew install starship
+  if [[ $? -eq 0 ]]; then
+    success "Starship has been installed successfully!"
+  else
+    error "Starship installation failed."
+  fi
 fi
 
-# -- Kitty --
-kitty --version
-if [[ $? -eq 0 ]]; then
-    rm -f "$HOME/.config/kitty/kitty.conf"
-fi
-
-info "Installing Kitty..."
-curl -# -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-if [ $? -eq 0 ]; then
-	success "Kitty has been installed successfully!"
+# -- Ghostty --
+if command -v ghostty &> /dev/null; then
+	success "Ghostty is already installed!"
 else
-	error "Kitty installation failed."
-	return 1
+  info "Installing Ghostty..."
+  brew install --cask ghostty
+  if [ $? -eq 0 ]; then
+    success "Ghostty has been installed successfully!"
+  else
+    error "Ghostty installation failed."
+    return 1
+  fi
 fi
