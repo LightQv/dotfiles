@@ -35,6 +35,7 @@ else
   else
     error "Starship installation failed."
   fi
+fi
 
 # -- Ghostty --
 if command -v ghostty &> /dev/null; then
@@ -48,3 +49,4 @@ else
     error "Ghostty installation failed."
     return 1
   fi
+fi

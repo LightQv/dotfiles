@@ -1,21 +1,19 @@
 #!/bin/bash
 
 # -- .config --
-CONFIG_URL="https://raw.githubusercontent.com/lightqv/dotfiles/main/.config"
-
-download_config_folder() {
-    local url="$1"
-    local dest="$2"
-    curl -# -o "$dest" "$url"
-    if [[ $? -eq 0 ]]; then
-        success "$(basename "$dest") has been successfully downloaded."
-    else
-        error "Error while downloading $(basename "$dest")."
-        return 1
-    fi
-}
-
-download_config_folder "$CONFIG_URL" "$HOME"
+info "Downloading dotfiles repo archive..."
+curl -L -o /tmp/dotfiles.zip https://github.com/lightqv/dotfiles/archive/refs/heads/main.zip
+if [[ $? -eq 0 ]]; then
+  info "Unzipping dotfiles archive..."
+  unzip -oq /tmp/dotfiles.zip -d /tmp
+  rm -rf "$HOME/.config"
+  mv /tmp/dotfiles-main/.config "$HOME/.config"
+  rm /tmp/dotfiles.zip
+  success ".config folder installed."
+else
+  error "Failed to download dotfiles archive."
+  exit 1
+fi
 
 # -- VIM --
 if [ -f "$HOME/.vimrc" ]; then
