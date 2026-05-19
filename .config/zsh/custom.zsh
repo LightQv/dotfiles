@@ -1,14 +1,17 @@
-## ZSH plugins
+# Zsh plugins
 source $HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath+=(~/.config/zsh/plugins/zsh-completions)
 source $HOME/.config/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-## starship
+# Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
-## fzf
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -17,8 +20,17 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475a \
 --multi"
 
-## autojump
-[[ -s "$(brew --prefix autojump)/etc/profile.d/autojump.sh" ]] && source "$(brew --prefix autojump)/etc/profile.d/autojump.sh"
+# Lazydocker
+export LAZYDOCKER_CONFIG_DIR="$HOME/.config/lazydocker"
 
-## force brew python use
+# Force brew python use
 export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
+
+# Opencode
+export EDITOR=nvim
+
+# Tmuxifier
+export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
+export TMUX_CONF="$HOME/.config/tmux/.tmux.conf"
+export TMUXIFIER_LAYOUT_PATH="$HOME/.config/tmux/tmuxifier/layouts"
+eval "$(tmuxifier init -)"

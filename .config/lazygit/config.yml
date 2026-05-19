@@ -1,0 +1,7 @@
+services:
+  "github.com": "github.com/LightQv"
+
+git:
+  commitPrefix:
+    pattern: "^([A-Z]+-\\d+)-(.+)"
+    replace: "[$1] ${2}"
