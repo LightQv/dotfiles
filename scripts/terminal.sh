@@ -25,6 +25,7 @@ install_tpm() {
     info "TPM already installed."
     return 0
   fi
+fi
 
   info "Installing tmux plugin manager (TPM)..."
   git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
