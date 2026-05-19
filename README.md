@@ -1,13 +1,24 @@
 ## Dotfiles
 
-### Script
+Bootstrap a fresh macOS machine with one command flow.
 
 ```bash
 git clone git@github.com:LightQv/dotfiles.git
 cd dotfiles
-source install.sh
+./install.sh
 ```
 
-### Next
+What the installer handles:
 
-- Launch **Raycast** and import _profile.rayconfig_ from _.config/raycast_
+- Homebrew installation (if missing)
+- Brew formulas and casks installation
+- Dotfiles sync from this repository into `~/.config`
+- `~/.vimrc` and `~/.tmux.conf` symlinks
+- TPM bootstrap install
+- Zsh plugin clones
+- JetBrainsMono Nerd Font install
+
+Manual final steps:
+
+- Open tmux and run `prefix + I` once to install tmux plugins
+- Import Raycast profile from `.config/raycast/profile.rayconfig`

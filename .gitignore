@@ -1,2 +1,8 @@
-.DS_STORE
-.idea
+.DS_Store
+.idea/
+*.un~
+**/.DS_Store
+**/.zsh_history
+**/.zsh_sessions/
+**/.git/
+**/node_modules/

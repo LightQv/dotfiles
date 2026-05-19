@@ -1,0 +1,13 @@
+bat
+eza
+fd
+fzf
+git
+lazygit
+neovim
+ripgrep
+starship
+tmux
+tmuxifier
+yazi
+zoxide

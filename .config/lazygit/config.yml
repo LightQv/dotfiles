@@ -1,0 +1,7 @@
+services:
+  "gitlab.leviatan.fr": "gitlab.leviatan.fr"
+
+git:
+  commitPrefix:
+    pattern: "^([A-Z]+-\\d+)-(.+)"
+    replace: "[$1] ${2}"

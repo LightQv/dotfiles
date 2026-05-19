@@ -1,50 +1,32 @@
 #!/bin/bash
 
-# -- Nerd font --
-NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip"
+install_nerd_font() {
+  local font_dir="$HOME/Library/Fonts"
+  local zip_path="$HOME/JetBrainsMono.zip"
+  local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
 
-info "Create a Font directory if it doesn't exist."
-FONT_DIR="$HOME/Library/Fonts"
-mkdir -p "$FONT_DIR"
+  mkdir -p "$font_dir"
 
-info "Downloading JetBrainsMono Nerd Font..."
-curl -# -L -o "$HOME/JetBrainsMono.zip" "$NERD_FONT_URL"
-if [ $? -eq 0 ]; then
-	info "Unzipping the font files..."
-	unzip -oq "$HOME/JetBrainsMono.zip" -d "$FONT_DIR"
-	if [ $? -eq 0 ]; then
-		success "JetBrainsMono Nerd Font has been installed successfully!"
-		rm "$HOME/JetBrainsMono.zip"
-	else
-		error "Failed to unzip JetBrainsMono Nerd Font."
-		return 1
-	fi
-else
-	error "Failed to download JetBrainsMono Nerd Font."
-	return 1
-fi
-
-# -- Starship --
-if command -v starship &> /dev/null; then
-	success "Starship is already installed!"
-else
-  info "Installing Starship..."
-  brew install starship
-  if [[ $? -eq 0 ]]; then
-    success "Starship has been installed successfully!"
-  else
-    error "Starship installation failed."
+  if ls "$font_dir"/JetBrainsMonoNerdFont* >/dev/null 2>&1; then
+    info "JetBrainsMono Nerd Font already installed."
+    return 0
   fi
 
-# -- Ghostty --
-if command -v ghostty &> /dev/null; then
-	success "Ghostty is already installed!"
-else
-  info "Installing Ghostty..."
-  brew install --cask ghostty
-  if [ $? -eq 0 ]; then
-    success "Ghostty has been installed successfully!"
-  else
-    error "Ghostty installation failed."
-    return 1
+  info "Downloading JetBrainsMono Nerd Font..."
+  curl -fsSL -o "$zip_path" "$font_url"
+  unzip -oq "$zip_path" -d "$font_dir"
+  rm -f "$zip_path"
+  success "JetBrainsMono Nerd Font installed."
+}
+
+install_tpm() {
+  local tpm_dir="$HOME/.tmux/plugins/tpm"
+  if [[ -d "$tpm_dir" ]]; then
+    info "TPM already installed."
+    return 0
   fi
+
+  info "Installing tmux plugin manager (TPM)..."
+  git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
+  success "TPM installed."
+}
