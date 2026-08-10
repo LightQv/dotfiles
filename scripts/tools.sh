@@ -15,6 +15,18 @@ install_formula_packages() {
   done < "$SCRIPT_DIR/formulas.txt"
 }
 
+ensure_tinycast_tap() {
+  if brew tap | grep -qx "abue-ammar/tinycast"; then
+    info "Tinycast Homebrew tap already configured."
+    return 0
+  fi
+
+  info "Configuring Tinycast Homebrew tap..."
+  brew trust --tap abue-ammar/tinycast
+  brew tap abue-ammar/tinycast
+  success "Tinycast Homebrew tap configured."
+}
+
 install_cask_packages() {
   while read -r cask; do
     [[ -z "$cask" || "$cask" =~ ^# ]] && continue

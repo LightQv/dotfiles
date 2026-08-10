@@ -21,4 +21,4 @@ What the installer handles:
 Manual final steps:
 
 - Open tmux and run `prefix + I` once to install tmux plugins
-- Import Raycast profile from `.config/raycast/profile.rayconfig`
+- Import Tinycast snapshots from `.config/tinycast/Tinycast-Settings.json` and `.config/tinycast/Tinycast-Quicklinks.json` if needed

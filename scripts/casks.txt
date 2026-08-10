@@ -2,4 +2,4 @@ docker
 firefox
 ghostty
 obsidian
-raycast
+tinycast

@@ -12,6 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 ensure_homebrew
 install_formula_packages
+ensure_tinycast_tap
 install_cask_packages
 install_nerd_font
 install_tpm
@@ -20,4 +21,4 @@ setup_symlinks
 install_zsh_plugins
 
 success "Bootstrap complete. Restart shell, run tmux, then press prefix + I once for TPM plugins."
-info "Raycast profile import remains manual: .config/raycast/profile.rayconfig"
+info "Tinycast snapshots copied to ~/.config/tinycast; import them manually from Tinycast settings if needed."

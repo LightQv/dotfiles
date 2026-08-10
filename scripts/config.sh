@@ -24,7 +24,7 @@ sync_dotfiles() {
   sync_dir "$REPO_DIR/.config/opencode" "$HOME/.config/opencode"
   sync_dir "$REPO_DIR/.config/lazygit" "$HOME/.config/lazygit"
   sync_dir "$REPO_DIR/.config/yazi" "$HOME/.config/yazi"
-  sync_dir "$REPO_DIR/.config/raycast" "$HOME/.config/raycast"
+  sync_dir "$REPO_DIR/.config/tinycast" "$HOME/.config/tinycast"
 
   cp "$REPO_DIR/.zshenv" "$HOME/.zshenv"
   success "Dotfiles synced."

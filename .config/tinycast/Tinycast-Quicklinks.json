@@ -1,0 +1,47 @@
+{
+  "quicklinks" : [
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "ED233D0F-7641-4E65-9BB9-8835F00F2984",
+      "link" : "https:\/\/claude.ai\/new",
+      "name" : "Ask claude",
+      "showsInRootSearch" : true
+    },
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "E3D45356-28C8-4AC8-B244-3405486DE08B",
+      "link" : "https:\/\/chatgpt.com\/",
+      "name" : "Ask GPT5",
+      "showsInRootSearch" : true
+    },
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "C5A77678-FCCC-4C20-B7AF-C3631B5CABC2",
+      "link" : "https:\/\/chatgpt.com\/?temporary-chat=true",
+      "name" : "Ask temporary GTP5",
+      "showsInRootSearch" : true
+    },
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "39C75032-6719-409D-BD7C-02D1EEDE5CA7",
+      "link" : "http:\/\/localhost:8000\/docs",
+      "name" : "Open API swagger",
+      "showsInRootSearch" : true
+    },
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "2D802E9B-7409-4216-85CE-5DDF0495911E",
+      "link" : "https:\/\/duckduckgo.com\/?q={Query}",
+      "name" : "Search DuckDuckGo",
+      "showsInRootSearch" : true
+    },
+    {
+      "createdAt" : "2026-08-09T11:35:48Z",
+      "id" : "CDBD2883-12B4-41D4-A947-CE5BFBD8B02E",
+      "link" : "https:\/\/google.com\/search?q={Query}",
+      "name" : "Search Google",
+      "showsInRootSearch" : true
+    }
+  ],
+  "version" : 1
+}
