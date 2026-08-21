@@ -7,7 +7,7 @@
 # Themes
 [ -f "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh" ] && source "$HOME/.config/zsh/themes/mocha-syntax-highlighting.zsh"
 
-. "$HOME/.local/bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 # opencode
-export PATH=/Users/vivianquerenet/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"

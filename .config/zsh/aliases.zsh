@@ -31,11 +31,6 @@ alias lsr='ls -R --level=2'
 # Fzf
 alias fp='fzf --style full --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}''
 
-# Zoxyde
-if [[ "$CLAUDECODE" != "1" ]]; then
-    eval "$(zoxide init --cmd cd zsh)"
-fi
-
 # Yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

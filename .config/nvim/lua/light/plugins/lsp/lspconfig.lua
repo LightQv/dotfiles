@@ -3,15 +3,13 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"saghen/blink.cmp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		local keymap = vim.keymap
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 			callback = function(ev)
 				local opts = { buffer = ev.buf, silent = true }
 				local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -43,21 +41,16 @@ return {
 					end)
 				end
 				local function open_definition_in_split()
-					local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+					local clients = vim.lsp.get_clients({ bufnr = 0, method = "textDocument/definition" })
 					if #clients == 0 then
 						vim.notify("No active LSP clients", vim.log.levels.WARN)
 						return
 					end
 
-					-- Pick the first client (or prefer one with 'textDocument/definition' support)
-					client = vim.iter(clients)
-						:filter(function(c)
-							return c.supports_method("textDocument/definition")
-						end)
-						:next() or clients[1]
+					local target_client = clients[1]
 
 					-- Use the correct encoding
-					local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+					local params = vim.lsp.util.make_position_params(0, target_client.offset_encoding)
 
 					vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
 						if not result or vim.tbl_isempty(result) then
@@ -110,15 +103,11 @@ return {
 				end
 
 				local function peek_definition()
-					local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+					local clients = vim.lsp.get_clients({ bufnr = 0, method = "textDocument/definition" })
 					if #clients == 0 then
 						return
 					end
-					local target_client = vim.iter(clients)
-						:filter(function(c)
-							return c.supports_method("textDocument/definition")
-						end)
-						:next() or clients[1]
+					local target_client = clients[1]
 
 					local params = vim.lsp.util.make_position_params(0, target_client.offset_encoding)
 					vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
@@ -189,23 +178,22 @@ return {
 				lsp_map("<leader>la", vim.lsp.buf.code_action, "See available code actions", "textDocument/codeAction")
 				lsp_map("<leader>lr", vim.lsp.buf.rename, "Smart rename", "textDocument/rename")
 
-				vim.api.nvim_create_autocmd("LspAttach", {
-					callback = function(event)
-						local options =
-							{ buffer = event.buf, silent = true, desc = "Show line diagnostics (focusable)" }
-						vim.keymap.set("n", "<leader>Ld", function()
-							vim.diagnostic.open_float(nil, { focus = true, border = "rounded" })
-						end, options)
-					end,
-				})
+				opts.desc = "Show line diagnostics (focusable)"
+				keymap.set("n", "<leader>Ld", function()
+					vim.diagnostic.open_float(nil, { focus = true, border = "rounded" })
+				end, opts)
 				opts.desc = "Show buffer diagnostics"
 				keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+				keymap.set("n", "[d", function()
+					vim.diagnostic.jump({ count = -1 })
+				end, opts)
 
 				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+				keymap.set("n", "]d", function()
+					vim.diagnostic.jump({ count = 1 })
+				end, opts)
 
 				opts.desc = "Show documentation for symbol"
 				keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -261,14 +249,11 @@ return {
 
 		-- === Python ===
 		vim.lsp.config("basedpyright", {
-			handlers = {
-				["textDocument/publishDiagnostics"] = function() end,
-			},
 			settings = {
 				basedpyright = {
 					analysis = {
-						typeCheckingMode = "off",
-						diagnosticMode = "off",
+						typeCheckingMode = "basic",
+						diagnosticMode = "openFilesOnly",
 						autoSearchPaths = true,
 						useLibraryCodeForTypes = true,
 					},
@@ -284,7 +269,7 @@ return {
 			name = "@vue/typescript-plugin",
 			location = vue_language_server_path,
 			languages = { "vue" },
-			configNamespace = "typscript",
+			configNamespace = "typescript",
 		}
 		-- vtsls config
 		vim.lsp.config("vtsls", {

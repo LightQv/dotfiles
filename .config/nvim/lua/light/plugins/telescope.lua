@@ -21,17 +21,9 @@ return {
 
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local transform_mod = require("telescope.actions.mt").transform_mod
 
 		local trouble = require("trouble")
 		local trouble_telescope = require("trouble.sources.telescope")
-
-		-- custom action
-		local custom_actions = transform_mod({
-			open_trouble_qflist = function(_)
-				trouble.toggle("quickfix")
-			end,
-		})
 
 		telescope.setup({
 			defaults = {
@@ -39,14 +31,9 @@ return {
 					local tail = require("telescope.utils").path_tail(path)
 					local dir = vim.fn.fnamemodify(path, ":h")
 					if dir == "." then
-						return tail, { { { 0, #tail }, "TelescopeResultsNormal" } }
+						return tail
 					end
-					local result = string.format("%s ~ %s", tail, dir)
-					local highlights = {
-						{ { 0, #tail }, "TelescopeResultsNormal" },
-						{ { #tail + 3, #result }, "TelescopeResultsComment" },
-					}
-					return result, highlights
+					return string.format("%s ~ %s", tail, dir)
 				end,
 				sorting_strategy = "ascending", -- results top-to-bottom
 				layout_config = {
@@ -81,6 +68,31 @@ return {
 			},
 		})
 
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("TelescopePathHighlight", { clear = true }),
+			pattern = "TelescopeResults",
+			callback = function(event)
+				vim.schedule(function()
+					if not vim.api.nvim_buf_is_valid(event.buf) then
+						return
+					end
+
+					local results_win = vim.fn.bufwinid(event.buf)
+					if results_win == -1 then
+						return
+					end
+
+					vim.fn.matchadd(
+						"TelescopeResultsPath",
+						[[ \~ \zs.\{-}\ze\%(:\d\+:\d\+\|$\)]],
+						200,
+						-1,
+						{ window = results_win }
+					)
+				end)
+			end,
+		})
+
 		telescope.load_extension("fzf")
 		telescope.load_extension("notify")
 
@@ -94,6 +106,7 @@ return {
 		keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		keymap.set("n", "<leader>fg", "<cmd>Telescope git_status<cr>", { desc = "Find Git changes" })
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
 		keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
 		keymap.set("n", "<leader>f<CR>", function()

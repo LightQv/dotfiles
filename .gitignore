@@ -6,3 +6,20 @@
 **/.zsh_sessions/
 **/.git/
 **/node_modules/
+**/__pycache__/
+
+# Machine- and project-specific tmux layouts
+.config/tmux/tmuxifier/layouts/
+
+# Local OpenCode plugins, package state, and OCX state
+.config/opencode/.gitignore
+.config/opencode/.ocx/
+.config/opencode/kdco-notify.json
+.config/opencode/node_modules/
+.config/opencode/ocx.jsonc
+.config/opencode/package-lock.json
+.config/opencode/package.json
+.config/opencode/plugins/kdco-primitives/
+.config/opencode/plugins/notify.ts
+.config/opencode/plugins/notify/
+.config/opencode/profiles/

@@ -93,7 +93,7 @@ return {
 				},
 			},
 
-			-- Statuscolumn (folds, numbers, signs)
+			-- Statusline
 			statusline = {
 				fallthrough = false, -- let conditions pick the right block
 				-- 1. Hide statusline only in Alpha
@@ -170,26 +170,6 @@ return {
 						end,
 						hl = { fg = "fg", bold = true },
 						update = { "LspAttach", "LspDetach", "BufEnter" },
-					},
-					{
-						provider = function()
-							local decoration = vim.g.flutter_tools_decorations
-							if not decoration or not decoration.device then
-								return ""
-							end
-
-							local device = decoration.device
-							local name = device.name or device.id or ""
-							local platform = device.platform or ""
-
-							if name == "" then
-								return ""
-							end
-
-							return string.format(" %s (%s)", name, platform)
-						end,
-						hl = { fg = "fg", bold = true },
-						update = { "User", pattern = { "FlutterRun", "FlutterDevices", "FlutterQuit" } },
 					},
 					lib.component.compiler_state(),
 					lib.component.virtual_env(),

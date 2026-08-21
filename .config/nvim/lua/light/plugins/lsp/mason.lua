@@ -32,6 +32,7 @@ return {
 				"basedpyright",
 				"vue_ls",
 				"vtsls",
+				"rust_analyzer",
 			},
 		})
 

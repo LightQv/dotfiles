@@ -5,9 +5,10 @@ fzf
 git
 lazygit
 neovim
+opencode
 ripgrep
+rtk
 starship
 tmux
-tmuxifier
 yazi
 zoxide

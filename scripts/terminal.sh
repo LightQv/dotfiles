@@ -20,13 +20,13 @@ install_nerd_font() {
 }
 
 install_tpm() {
-  local tpm_dir="$HOME/.tmux/plugins/tpm"
+  local tpm_dir="$HOME/.config/tmux/plugins/tpm"
   if [[ -d "$tpm_dir" ]]; then
     info "TPM already installed."
     return 0
   fi
-fi
 
+  mkdir -p "$(dirname "$tpm_dir")"
   info "Installing tmux plugin manager (TPM)..."
   git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
   success "TPM installed."

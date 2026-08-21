@@ -56,6 +56,8 @@ return {
 				TelescopePromptNormal = { bg = "NONE" },
 				TelescopePromptBorder = { bg = "NONE" },
 				TelescopeResultsNormal = { fg = c.pink, bg = "NONE", bold = true },
+				TelescopeResultsPath = { fg = c.overlay1, italic = true },
+				TelescopeSelection = { fg = "NONE", bg = c.surface0, bold = true },
 				TelescopePreviewNormal = { bg = "NONE" },
 				TelescopeTitle = { fg = c.mauve, bg = "NONE", bold = true },
 				-- Mason / Noice / Notify

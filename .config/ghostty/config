@@ -4,7 +4,6 @@ copy-on-select = clipboard
 
 # Theme
 theme = Catppuccin Mocha
-background-opacity = 0.9
 background-blur = true
 split-divider-color = #313244
 window-padding-x = 6
@@ -13,18 +12,3 @@ unfocused-split-opacity = 0.5
 font-family = "JetBrainsMono Nerd Font"
 font-size = 13
 adjust-cell-height = 10%
-
-# Keyboard shortcuts
-keybind = ctrl+p>h=new_split:down
-keybind = ctrl+p>v=new_split:right
-keybind = ctrl+p>f=toggle_split_zoom
-keybind = ctrl+p>-=resize_split:left,150
-keybind = ctrl+p>==resize_split:right,150
-keybind = ctrl+p>r=equalize_splits
-
-keybind = ctrl+p>ctrl+h=goto_split:left
-keybind = ctrl+p>ctrl+j=goto_split:down
-keybind = ctrl+p>ctrl+k=goto_split:up
-keybind = ctrl+p>ctrl+l=goto_split:right
-
-keybind = ctrl+p>backspace=close_surface

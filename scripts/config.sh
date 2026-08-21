@@ -6,26 +6,57 @@ REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 sync_dir() {
   local src="$1"
   local dest="$2"
+  shift 2
 
   mkdir -p "$dest"
-  rsync -a --delete "$src/" "$dest/"
+  rsync -a --delete "$@" "$src/" "$dest/"
+}
+
+sync_overlay() {
+  local src="$1"
+  local dest="$2"
+  shift 2
+
+  mkdir -p "$dest"
+  rsync -a "$@" "$src/" "$dest/"
 }
 
 sync_dotfiles() {
   info "Syncing dotfiles to HOME..."
 
-  sync_dir "$REPO_DIR/.config/nvim" "$HOME/.config/nvim"
-  sync_dir "$REPO_DIR/.config/tmux" "$HOME/.config/tmux"
-  sync_dir "$REPO_DIR/.config/zsh" "$HOME/.config/zsh"
+  sync_dir "$REPO_DIR/.config/nvim" "$HOME/.config/nvim" \
+    --exclude='.git/'
+  sync_dir "$REPO_DIR/.config/tmux" "$HOME/.config/tmux" \
+    --exclude='plugins/' \
+    --exclude='tmuxifier/layouts/'
+  sync_dir "$REPO_DIR/.config/zsh" "$HOME/.config/zsh" \
+    --exclude='plugins/' \
+    --exclude='.zcompdump*' \
+    --exclude='.zsh_history' \
+    --exclude='.zsh_sessions/' \
+    --exclude='*.un~'
   sync_dir "$REPO_DIR/.config/starship" "$HOME/.config/starship"
-  sync_dir "$REPO_DIR/.config/ghostty" "$HOME/.config/ghostty"
+  sync_dir "$REPO_DIR/.config/ghostty" "$HOME/.config/ghostty" \
+    --exclude='*.bak'
   sync_dir "$REPO_DIR/.config/vim" "$HOME/.config/vim"
   sync_dir "$REPO_DIR/.config/bat" "$HOME/.config/bat"
-  sync_dir "$REPO_DIR/.config/opencode" "$HOME/.config/opencode"
+  sync_overlay "$REPO_DIR/.config/opencode" "$HOME/.config/opencode" \
+    --exclude='.gitignore' \
+    --exclude='.ocx/' \
+    --exclude='kdco-notify.json' \
+    --exclude='node_modules/' \
+    --exclude='ocx.jsonc' \
+    --exclude='package-lock.json' \
+    --exclude='package.json' \
+    --exclude='plugins/kdco-primitives/' \
+    --exclude='plugins/notify.ts' \
+    --exclude='plugins/notify/' \
+    --exclude='profiles/'
   sync_dir "$REPO_DIR/.config/lazygit" "$HOME/.config/lazygit"
   sync_dir "$REPO_DIR/.config/yazi" "$HOME/.config/yazi"
   sync_dir "$REPO_DIR/.config/tinycast" "$HOME/.config/tinycast"
 
+  mkdir -p "$HOME/.config/tmux/tmuxifier/layouts"
   cp "$REPO_DIR/.zshenv" "$HOME/.zshenv"
   success "Dotfiles synced."
 }

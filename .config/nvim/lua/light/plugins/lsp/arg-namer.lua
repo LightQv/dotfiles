@@ -4,8 +4,12 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("LspArgNamer", { clear = true }),
 			callback = function(args)
+				if vim.bo[args.buf].filetype ~= "python" then
+					return
+				end
+
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if not client.server_capabilities.signatureHelpProvider then
+				if not client or not client.server_capabilities.signatureHelpProvider then
 					return
 				end
 
@@ -146,7 +150,7 @@ return {
 					end
 				end
 
-				vim.keymap.set("n", "<leader>lp", function()
+				vim.keymap.set("n", "<leader>ln", function()
 					local cursor = vim.api.nvim_win_get_cursor(0)
 					local row, col = cursor[1] - 1, cursor[2]
 					local line = vim.api.nvim_get_current_line()
@@ -172,7 +176,7 @@ return {
 					local start_row, start_col, _, _ = args_node:range()
 
 					-- Find a client that supports signatureHelp to get the correct encoding
-					local clients = vim.lsp.get_active_clients({ bufnr = 0, method = "textDocument/signatureHelp" })
+					local clients = vim.lsp.get_clients({ bufnr = 0, method = "textDocument/signatureHelp" })
 					if #clients == 0 then
 						vim.notify("No LSP client supports signatureHelp", vim.log.levels.WARN)
 						return
@@ -184,7 +188,7 @@ return {
 					params.position.character = start_col + 1 -- Move 1 char inside
 
 					vim.lsp.buf_request(0, "textDocument/signatureHelp", params, handler)
-				end, { buffer = args.buf, desc = "LSP: Name Argument" })
+				end, { buffer = args.buf, desc = "LSP: Name argument" })
 			end,
 		})
 	end,

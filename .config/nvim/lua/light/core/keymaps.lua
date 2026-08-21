@@ -4,30 +4,10 @@ local keymap = vim.keymap
 
 -- General
 keymap.set("n", "<leader>w", "<cmd>update<CR>", { desc = "Save" })
-keymap.set("n", "<C-q>", "<cmd>q!<CR>", { desc = "Quit" })
+keymap.set("n", "<C-q>", "<cmd>quit<CR>", { desc = "Quit" })
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>hh", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
-keymap.set("n", "<leader>r", function()
-	local bufs = vim.t.bufs or vim.api.nvim_list_bufs()
-	local saved_bufs = {}
-	if vim.t.bufs then
-		for _, buf in ipairs(vim.t.bufs) do
-			table.insert(saved_bufs, buf)
-		end
-	end
-
-	for _, bufnr in ipairs(bufs) do
-		if vim.api.nvim_buf_is_loaded(bufnr) and vim.api.nvim_buf_is_valid(bufnr) then
-			pcall(vim.api.nvim_buf_call, bufnr, function()
-				vim.cmd("edit!")
-			end)
-		end
-	end
-
-	if #saved_bufs > 0 then
-		vim.t.bufs = saved_bufs
-	end
-end, { desc = "Reload all buffers" })
+keymap.set("n", "<leader>R", "<cmd>checktime<CR>", { desc = "Check external file changes" })
 
 -- Window management
 keymap.set("n", "|", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically

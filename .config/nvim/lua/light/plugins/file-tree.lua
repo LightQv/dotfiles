@@ -19,7 +19,7 @@ return {
 				-- If Neo-tree window exist -> focus
 				for _, win in ipairs(vim.api.nvim_list_wins()) do
 					local buf = vim.api.nvim_win_get_buf(win)
-					local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+					local ft = vim.bo[buf].filetype
 					if ft == "neo-tree" then
 						vim.api.nvim_set_current_win(win)
 						return
@@ -35,6 +35,7 @@ return {
 			require("neo-tree").setup({
 				close_if_last_window = true, -- close if it's the last window
 				filesystem = {
+					use_libuv_file_watcher = true,
 					filtered_items = {
 						visible = true, -- show hidden files (toggle with H inside Neo-tree)
 						hide_dotfiles = false,
@@ -42,6 +43,7 @@ return {
 					},
 					follow_current_file = {
 						enabled = true, -- focus the file in the tree when opening
+						leave_dirs_open = true,
 					},
 					hijack_netrw_behavior = "open_default", -- replace netrw
 				},
@@ -94,7 +96,7 @@ return {
 						["s"] = "open_split", -- open in horizontal split
 						["v"] = "open_vsplit", -- open in vertical split
 						["t"] = "open_tabnew", -- open in new tab
-						["z"] = "close_all_nodes", -- collapse all
+						["Z"] = "close_all_nodes", -- collapse all
 						["R"] = "refresh", -- refresh tree
 						["a"] = { "add", config = { show_path = "relative" } }, -- add file
 						["A"] = "add_directory", -- add folder

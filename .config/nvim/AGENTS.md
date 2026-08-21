@@ -104,7 +104,6 @@ The configuration uses a structured leader key system (defined in which-key):
 - `<leader>g` - Git
 - `<leader>h` - Git signs (Gitsigns)
 - `<leader>l` - LSP actions
-- `<leader>m` - Mobile (formatting)
 - `<leader>n` - Notifications
 - `<leader>s` - Splits
 - `<leader>x` - Trouble
@@ -121,7 +120,7 @@ The configuration uses a structured leader key system (defined in which-key):
 - `K` - Hover documentation
 - `<leader>la` - Code actions
 - `<leader>lr` - Rename
-- `<leader>ld` - Show line diagnostics (focusable)
+- `<leader>Ld` - Show line diagnostics (focusable)
 - `[d` / `]d` - Previous/next diagnostic
 
 ### Treesitter
@@ -130,7 +129,7 @@ Parsers are auto-installed for: JSON, YAML, JS, TS, HTML, CSS, Vue, Markdown, Ba
 
 ### Special Notes
 
-- Tabs are set to 2 spaces width but **NOT expanded** (`expandtab = false`)
+- Tabs are set to 2 spaces width and expanded (`expandtab = true`)
 - System clipboard is integrated (`clipboard = "unnamedplus"`)
 - Swapfiles are disabled
 - Format-on-save is enabled globally (3s timeout)
