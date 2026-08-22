@@ -12,6 +12,12 @@ Default mode: full. `/caveman lite`, `/caveman full`, `/caveman ultra`, `/cavema
 
 Code, commits, PR descriptions, destructive confirmations, and security findings use normal clarity when compression risks misread.
 
+## Git Orchestration
+
+- Ordinary agent work stops after edits and validation. A request to fix, implement, clean up, or review never authorizes staging, committing, pushing, switching branches, or creating/updating pull or merge requests.
+- Only isolated `/merge-request` may run `git add`, `git commit`, `git push`, create/switch branches, or create pull/merge requests.
+- `/merge-request` approvals apply only to displayed repository action in that invocation. Never reuse approval from earlier turns, sessions, command runs, existing branches, or existing requests.
+
 Available OpenCode skills:
 
 - `caveman`: persistent terse communication mode.

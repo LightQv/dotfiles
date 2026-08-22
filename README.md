@@ -12,6 +12,7 @@ What the installer handles:
 
 - Homebrew installation (if missing)
 - Brew formulas and casks installation
+- Separate optional prompts for the GitHub (`gh`) and GitLab (`glab`) CLIs
 - Dotfiles sync from this repository into `~/.config`
 - Portable OpenCode config, generic agents, commands, skills, and RTK integration
 - `~/.vimrc` and `~/.tmux.conf` symlinks
@@ -21,7 +22,11 @@ What the installer handles:
 
 Manual final steps:
 
+- Authenticate any installed forge CLI with `gh auth login` or `glab auth login`
+- Restart OpenCode after installation so config-time changes take effect
 - Open tmux and run `prefix + I` once to install tmux plugins
 - Import Tinycast snapshots from `.config/tinycast/Tinycast-Settings.json` and `.config/tinycast/Tinycast-Quicklinks.json` if needed
 
-Most managed config directories mirror the repository, while OpenCode uses a non-deleting overlay. Sync exclusions preserve local tmuxifier layouts, OpenCode notification plugins and OCX state, plugin checkouts, shell history, and Neovim Git metadata.
+The OpenCode `/merge-request` command supports GitHub and GitLab. Add private forge hosts to the ignored local file `~/.config/opencode/forge-hosts.local.json` as a JSON object mapping hostnames to `"github"` or `"gitlab"`.
+
+Most managed config directories mirror the repository, while OpenCode uses a non-deleting overlay. Sync exclusions preserve local tmuxifier layouts, private forge hosts, OpenCode notification plugins and OCX state, plugin checkouts, shell history, and Neovim Git metadata.

@@ -12,6 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 ensure_homebrew
 install_formula_packages
+install_optional_forge_clis
 ensure_tinycast_tap
 install_cask_packages
 install_nerd_font
@@ -20,5 +21,5 @@ sync_dotfiles
 setup_symlinks
 install_zsh_plugins
 
-success "Bootstrap complete. Restart shell, run tmux, then press prefix + I once for TPM plugins."
+success "Bootstrap complete. Restart shell and OpenCode, run tmux, then press prefix + I once for TPM plugins."
 info "Tinycast snapshots copied to ~/.config/tinycast; import them manually from Tinycast settings if needed."

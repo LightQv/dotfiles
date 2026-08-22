@@ -15,6 +15,42 @@ install_formula_packages() {
   done < "$SCRIPT_DIR/formulas.txt"
 }
 
+install_optional_formula() {
+  local formula="$1"
+  local description="$2"
+  local reply
+
+  if brew list "$formula" >/dev/null 2>&1; then
+    info "$formula already installed."
+    return 0
+  fi
+
+  if [[ ! -t 0 ]]; then
+    info "Skipping optional $formula installation in non-interactive mode."
+    return 0
+  fi
+
+  if ! read -r -p "Install $description ($formula)? [y/N] " reply; then
+    info "Skipping optional $formula installation."
+    return 0
+  fi
+  case "$reply" in
+    y|Y|yes|YES|Yes)
+      info "Installing $formula..."
+      brew install "$formula"
+      success "$formula installed."
+      ;;
+    *)
+      info "Skipping optional $formula installation."
+      ;;
+  esac
+}
+
+install_optional_forge_clis() {
+  install_optional_formula "gh" "GitHub CLI"
+  install_optional_formula "glab" "GitLab CLI"
+}
+
 ensure_tinycast_tap() {
   if brew tap | grep -qx "abue-ammar/tinycast"; then
     info "Tinycast Homebrew tap already configured."

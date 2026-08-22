@@ -14,11 +14,6 @@ permission:
     "skills/**": allow
     ".opencode/agent/**": allow
     ".opencode/skills/**": allow
-  bash:
-    "*": ask
-    "git *": allow
-    "node -e *": allow
-    "bun *": allow
   webfetch: deny
 ---
 

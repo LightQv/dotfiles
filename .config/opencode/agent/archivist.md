@@ -5,9 +5,9 @@ temperature: 0.3
 permission:
   edit: allow
   bash:
-    "*": ask
     "git status*": allow
-    "git diff*": allow
+    "git diff --no-ext-diff --no-textconv": allow
+    "git diff --cached --no-ext-diff --no-textconv": allow
   webfetch: deny
 ---
 
@@ -150,7 +150,7 @@ async def get_user_orders_endpoint(
 git status
 
 # If git repo with changes, get diff
-git diff HEAD --stat
+git diff --no-ext-diff --no-textconv
 
 # If user specified files, read those files instead
 ```

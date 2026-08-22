@@ -5,10 +5,11 @@ temperature: 0.1
 permission:
   edit: deny
   bash:
-    "*": ask
     "git status*": allow
-    "git diff*": allow
-    "git show*": allow
+    "git diff --no-ext-diff --no-textconv": allow
+    "git diff --cached --no-ext-diff --no-textconv": allow
+    "git show --no-ext-diff --no-textconv --name-only --stat --format=fuller HEAD": allow
+    "git show --no-ext-diff --no-textconv --format=fuller HEAD": allow
   webfetch: allow
 ---
 

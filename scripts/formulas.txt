@@ -5,6 +5,7 @@ fzf
 git
 lazygit
 neovim
+node
 opencode
 ripgrep
 rtk

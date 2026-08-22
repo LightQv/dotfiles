@@ -5,10 +5,11 @@ temperature: 0.3
 permission:
   edit: deny
   bash:
-    "*": ask
     "git status*": allow
-    "git diff*": allow
-    "git show*": allow
+    "git diff --no-ext-diff --no-textconv": allow
+    "git diff --cached --no-ext-diff --no-textconv": allow
+    "git show --no-ext-diff --no-textconv --name-only --stat --format=fuller HEAD": allow
+    "git show --no-ext-diff --no-textconv --format=fuller HEAD": allow
   webfetch: deny
 ---
 
@@ -43,14 +44,11 @@ Use this agent when the user asks for code review of:
 
 - For current diff:
   - `git status --short`
-  - `git diff --staged`
-  - `git diff`
-  - `git diff --name-only --staged`
-  - `git diff --name-only`
+  - `git diff --cached --no-ext-diff --no-textconv`
+  - `git diff --no-ext-diff --no-textconv`
 - For previous commit:
-  - `git show --name-only --stat --format=fuller HEAD`
-  - `git diff --name-only HEAD~1..HEAD`
-  - `git diff HEAD~1..HEAD`
+  - `git show --no-ext-diff --no-textconv --name-only --stat --format=fuller HEAD`
+  - `git show --no-ext-diff --no-textconv --format=fuller HEAD`
 
 2. Read touched files to understand intent and surrounding context, not just changed lines.
 3. Evaluate changes against this rubric:

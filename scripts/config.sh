@@ -43,6 +43,13 @@ sync_dotfiles() {
   sync_overlay "$REPO_DIR/.config/opencode" "$HOME/.config/opencode" \
     --exclude='.gitignore' \
     --exclude='.ocx/' \
+    --exclude='.mypy_cache/' \
+    --exclude='.pytest_cache/' \
+    --exclude='.ruff_cache/' \
+    --exclude='__pycache__/' \
+    --exclude='*.pyc' \
+    --exclude='bun.lock' \
+    --exclude='forge-hosts.local.json' \
     --exclude='kdco-notify.json' \
     --exclude='node_modules/' \
     --exclude='ocx.jsonc' \

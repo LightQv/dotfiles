@@ -7,7 +7,6 @@ permission:
   skill:
     "terminal-browser": allow
   bash:
-    "*": ask
     "command -v terminal-browser": allow
     "terminal-browser *": allow
     "terminal-browser setup*": deny

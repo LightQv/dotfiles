@@ -14,6 +14,13 @@
 # Local OpenCode plugins, package state, and OCX state
 .config/opencode/.gitignore
 .config/opencode/.ocx/
+.config/opencode/.mypy_cache/
+.config/opencode/.pytest_cache/
+.config/opencode/.ruff_cache/
+.config/opencode/__pycache__/
+.config/opencode/*.pyc
+.config/opencode/bun.lock
+.config/opencode/forge-hosts.local.json
 .config/opencode/kdco-notify.json
 .config/opencode/node_modules/
 .config/opencode/ocx.jsonc

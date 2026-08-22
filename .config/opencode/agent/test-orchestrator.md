@@ -5,9 +5,9 @@ temperature: 0.1
 permission:
   edit: deny
   bash:
-    "*": ask
     "git status*": allow
-    "git diff*": allow
+    "git diff --no-ext-diff --no-textconv": allow
+    "git diff --cached --no-ext-diff --no-textconv": allow
     "npm test*": allow
     "npm run test*": allow
     "npm run typecheck*": allow
